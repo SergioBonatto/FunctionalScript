@@ -3,4 +3,7 @@ const False = (t, f) => f;
 
 const If = (condition, then, otherwise) => condition(then, otherwise);
 
-console.log(If(True, 'true', 'false')); // true
+const Not = b => !b(False, True);
+
+
+console.log(If(False, "true", "false"))
