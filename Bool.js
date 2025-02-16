@@ -1,10 +1,10 @@
-const True = (t, f) => t;
+const True  = (t, f) => t;
 const False = (t, f) => f;
 
-const If = (condition, then, otherwise) => condition(then, otherwise);
-
+const If  = (c, t, o) => c(t, o);
 const Not = b => b(False, True);
+const And = (b1, b2) => (t, f) => b1 (b2(t, f), f)
 
-console.log(Not(True) ("true", "false"));
+console.log(And(False, True) ("true", "false"));
 
 
