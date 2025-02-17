@@ -11,16 +11,23 @@ const Xor = a => b => (t, f) => a(b(f, t), b(t, f));
 
 const Nand = a => b => (t, f) => a(b(f, t), t);
 const Nor  = a => b => (t, f) => a(f, b(f, t));
-const Xnor = a => b => (t, f) => a(b(t, f), b(f, t));
+const Xnor = a => b => (t, f) => a(b(t, f), b(f, t)); // equal
 
-const XnorNot = a => b => (t, f) => a(b(f, t), b(t, f));
-const Implies = a => b => (t, f) => a(b(t, f), t);
+// complementar
+const AndC = a => b => (t, f) => a (b(f, t), f)
+const NandC = a => b => (t, f) => a(b(t, f), t); // implies
+const OrC = a => b => (t, f) => a(t, b(f, t))
+const NorC = a => b => (t, f) => a(f, b(t, f))
+
+const Implies = a => b => (t, f) => a(b(t, f), t); // NandC
 
 const Majority3 = a => b => c => (t, f) =>
   a(b(t, c(t, f)), b(c(t, f), f));
 
 const Minority3 = a => b => c => (t, f) =>
   a(b(f, c(f, t)), b(c(f, t), t));
+
+
 
 // console.log(Not(True) ("true", "false"));
 // console.log(Not(False) ("true", "false"));
