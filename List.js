@@ -25,6 +25,12 @@ const Map = (xs, f) =>
     xs
   )
 
+const Length = xs => 
+  xs(
+    (h, t) => Length(t) + 1,
+    0
+  )
+
 const Show = list => 
   list(
     (head, tail) => [head, ...Show(tail)],
@@ -34,7 +40,8 @@ const Show = list =>
 const list1 = Cons(1, Cons(2, Nil));
 const list2 = Cons(3, Cons(4, Nil));
 
-console.log(Show(Map(Reverse(Concat(list1, list2)), (x) => x + 1)))
+// console.log(Show(Map(Reverse(Concat(list1, list2)), (x) => x + 1)))
+console.log(Length(Concat(list1, list2)))
 
 
 
