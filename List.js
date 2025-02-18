@@ -8,9 +8,9 @@ const Append = (xs, x) =>
   )
 
 const Concat = (xs, ys) =>
-  ys(
-    (h, t) => (Concat((Append(xs, h)), t)),
-    xs
+  xs(
+    (h, t) => Cons(h, Concat(t, ys)),
+    ys
   )
 
 const Reverse = xs =>
@@ -31,6 +31,12 @@ const Length = xs =>
     0
   )
 
+const fromArray = xs => 
+  xs.length === 0 
+    ? Nil
+    : Cons(xs[0], fromArray(xs.slice(1)))
+
+
 const Show = list => 
   list(
     (head, tail) => [head, ...Show(tail)],
@@ -41,7 +47,8 @@ const list1 = Cons(1, Cons(2, Nil));
 const list2 = Cons(3, Cons(4, Nil));
 
 // console.log(Show(Map(Reverse(Concat(list1, list2)), (x) => x + 1)))
-console.log(Length(Concat(list1, list2)))
+console.log(Show(Concat(list1, list2)))
+// console.log(Show(Reverse(fromArray([1, 2, 3, 4]))))
 
 
 
