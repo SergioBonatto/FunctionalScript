@@ -13,11 +13,10 @@ const Nand = a => b => (t, f) => a(b(f, t), t);
 const Nor  = a => b => (t, f) => a(f, b(f, t));
 const Xnor = a => b => (t, f) => a(b(t, f), b(f, t)); // equal
 
-// complementar
-const AndC = a => b => (t, f) => a (b(f, t), f)
+const AndC  = a => b => (t, f) => a(b(f, t), f)
 const NandC = a => b => (t, f) => a(b(t, f), t); // implies
-const OrC = a => b => (t, f) => a(t, b(f, t))
-const NorC = a => b => (t, f) => a(f, b(t, f))
+const OrC   = a => b => (t, f) => a(t, b(f, t))
+const NorC  = a => b => (t, f) => a(f, b(t, f))
 
 const Implies = a => b => (t, f) => a(b(t, f), t); // NandC
 
